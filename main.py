@@ -23,7 +23,6 @@ class App:
         for key_code in self.key_codes:
             self.inputs[key_code] = 0
 
-
     def start(self):
         self.all_sprites.add(Board(pygame.Vector2(50,100)))
         pass
@@ -38,11 +37,6 @@ class App:
                 for key_code in self.key_codes:
                     if event.key == key_code:
                         self.inputs[key_code] = 1
-            """elif event.type == pygame.KEYUP:
-                for key_code in self.key_codes:
-                    if event.key == key_code:
-                        self.inputs[key_code] = 0"""
-                
 
     def update(self):
         self.all_sprites.update(self.inputs)
