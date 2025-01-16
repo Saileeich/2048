@@ -15,14 +15,9 @@ class Board(pygame.sprite.Sprite):
         self.score = 0
 
     def start(self):
-        self.board = [
-            [8,0,0,0],
-            [2,4,0,0],
-            [0,2,2,0],
-            [2,0,0,16]
-        ]
-
-        """self.image.blit(piece.image, piece.rect)"""
+        self.board = [[0 for _ in range(4)] for _ in range(4)]
+        self.spawn_piece()
+        self.draw_pieces()
 
     def update(self, inputs):
         """
