@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 
-from board import Board, Piece
+from board import Board
 
 WIDTH, HEIGHT = 400, 450
 FPS = 24
