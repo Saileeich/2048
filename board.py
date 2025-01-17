@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+import random
 
 class Board(pygame.sprite.Sprite):
     def __init__(self, pos: pygame.Vector2):
@@ -136,7 +137,7 @@ class Board(pygame.sprite.Sprite):
 
         if empty_spots:
             spot = empty_spots[pygame.time.get_ticks() % len(empty_spots)]
-            self.board[spot[0]][spot[1]] = 2
+            self.board[spot[0]][spot[1]] = random.choice([2,2,2,4])
         
 
     def draw_pieces(self):
