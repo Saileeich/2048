@@ -119,7 +119,7 @@ class Board(pygame.sprite.Sprite):
         if not self.game_over:
             self.game_over = True
             pygame.event.post(pygame.event.Event(QUIT))
-            print(self.score)
+
 
     def update_score(self):
         self.score = 0

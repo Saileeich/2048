@@ -60,6 +60,7 @@ class App:
         self.run()
 
     def play_step(self, action):
+        print(action, end="\r")
         # Convert action to inputs
         self.inputs = {key: 0 for key in self.key_codes}
         if action[0] == 1:
