@@ -19,6 +19,7 @@ class Board(pygame.sprite.Sprite):
         self.board = [[0 for _ in range(4)] for _ in range(4)]
         self.spawn_piece()
         self.draw_pieces()
+        self.game_over = False  # Reset the game over flag
 
     def update(self, inputs):
         """
@@ -115,15 +116,16 @@ class Board(pygame.sprite.Sprite):
                 if x < 3 and self.board[y][x] == self.board[y][x+1]:
                     return
         
-        # Create pygame event to close the game
-        pygame.event.post(pygame.event.Event(QUIT))
+        if not self.game_over:
+            self.game_over = True
+            pygame.event.post(pygame.event.Event(QUIT))
+            print(self.score)
 
     def update_score(self):
         self.score = 0
         for row in self.board:
             for num in row:
                 self.score += num
-        print(self.score)
 
     def spawn_piece(self):
         """

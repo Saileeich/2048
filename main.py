@@ -28,15 +28,15 @@ class App:
         pass
 
     def handle_events(self): 
-        for key_code in self.key_codes:
-            self.inputs[key_code] = 0
+        """for key_code in self.key_codes:
+            self.inputs[key_code] = 0"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
-            elif event.type == pygame.KEYDOWN:
+            """elif event.type == pygame.KEYDOWN:
                 for key_code in self.key_codes:
                     if event.key == key_code:
-                        self.inputs[key_code] = 1
+                        self.inputs[key_code] = 1"""
 
     def update(self):
         self.all_sprites.update(self.inputs)
@@ -60,7 +60,6 @@ class App:
         self.run()
 
     def play_step(self, action):
-        print(action)
         # Convert action to inputs
         self.inputs = {key: 0 for key in self.key_codes}
         if action[0] == 1:
