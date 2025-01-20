@@ -54,6 +54,43 @@ class App:
             self.clock.tick(FPS)
         pygame.quit()
 
+    def restart(self):
+        self.awake()
+        self.start()
+        self.run()
+
+    def play_step(self, action):
+        print(action)
+        # Convert action to inputs
+        self.inputs = {key: 0 for key in self.key_codes}
+        if action[0] == 1:
+            self.inputs[pygame.K_w] = 1
+        elif action[1] == 1:
+            self.inputs[pygame.K_s] = 1
+        elif action[2] == 1:
+            self.inputs[pygame.K_a] = 1
+        elif action[3] == 1:
+            self.inputs[pygame.K_d] = 1
+
+        self.handle_events()
+        self.update()
+        self.draw()
+        self.clock.tick(FPS)
+
+        reward = 0
+        done = False
+        score = self.all_sprites.sprites()[0].score
+
+        if not self.running:
+            done = True
+            reward = -10  # Negative reward for losing
+
+        return reward, done, score
+
+    def reset(self):
+        self.awake()
+        self.start()
+
 
 if __name__ == "__main__":
     app = App()
