@@ -27,21 +27,21 @@ class Board(pygame.sprite.Sprite):
         """
         
         if inputs[pygame.K_w] or inputs[pygame.K_UP]:
-            self.move("up")
+            self.move(0)
         elif inputs[pygame.K_s] or inputs[pygame.K_DOWN]:
-            self.move("down")
+            self.move(1)
         elif inputs[pygame.K_a] or inputs[pygame.K_LEFT]:
-            self.move("left")
+            self.move(2)
         elif inputs[pygame.K_d] or inputs[pygame.K_RIGHT]:
-            self.move("right")
+            self.move(3)
 
         self.draw_pieces()
 
-    def move(self, direction: str):
+    def move(self, direction: int):
         """
         Makes the pieces slide all the way in the specified direction. If two pieces of the same size collide, they should merge.
         """
-        if direction == "up":
+        if direction == 0:
             for x in range(4):
                 for y in range(1,4):
                     if self.board[y][x]:
@@ -55,7 +55,7 @@ class Board(pygame.sprite.Sprite):
                                 break
                             else:
                                 break
-        elif direction == "down":
+        elif direction == 1:
             for x in range(4):
                 for y in range(2, -1, -1):
                     if self.board[y][x]:
@@ -69,7 +69,7 @@ class Board(pygame.sprite.Sprite):
                                 break
                             else:
                                 break
-        elif direction == "left":
+        elif direction == 2:
             for y in range(4):
                 for x in range(1,4):
                     if self.board[y][x]:
@@ -83,7 +83,7 @@ class Board(pygame.sprite.Sprite):
                                 break
                             else:
                                 break
-        elif direction == "right":
+        elif direction == 3:
             for y in range(4):
                 for x in range(2, -1, -1):
                     if self.board[y][x]:
